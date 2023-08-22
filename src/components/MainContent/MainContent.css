@@ -1,0 +1,6 @@
+.main-content {
+    position: relative; /* Esto es para que el Sidebar (que está en posición absoluta) esté posicionado relativo a este contenedor */
+    padding-left: 210px; /* Para evitar que el contenido se superponga con el sidebar */
+
+  }
+  

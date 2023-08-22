@@ -1,0 +1,35 @@
+.sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 20;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: width 0.3s;
+  }
+  
+  .sidebar--active {
+    width: 200px; /* o el ancho que desees */
+  }
+  
+  .sidebar__button {
+    display: block;
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 10px 20px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar__button:hover {
+    background-color: rgba(135, 8, 8, 0.1); /* Resaltado al pasar el ratón */
+  }
+  
+  .sidebar__button--active {
+    background-color: rgba(0, 0, 0, 0.3); /* Resaltado cuando está activo */
+  }
+  

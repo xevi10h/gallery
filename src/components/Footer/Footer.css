@@ -1,0 +1,26 @@
+.flowbox-footer {
+    background-color: #1a2b3c; /* Same deep blue color as the header */
+    padding: 1rem 2rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth at the top of the footer */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer-container {
+    max-width: 1200px; /* Matching the header's max width */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-content {
+    color: #ffffff; /* White color for the text */
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+  }
+  
+  /* If you want to add more styling, navigation links, hover effects, etc., you can add those styles here */
+  
