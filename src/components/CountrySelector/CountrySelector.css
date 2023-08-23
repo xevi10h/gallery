@@ -1,0 +1,14 @@
+.search {
+    position: relative;
+    width: 100%;
+    margin: 50px;
+  }
+  
+.search .MuiInputBase-root {
+    border-radius: 25px; /* Puedes modificar este valor para obtener el nivel de redondez deseado */
+}
+
+.searchIcon {
+    margin-right: 20;
+    color: black;
+  }

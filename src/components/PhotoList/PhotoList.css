@@ -1,0 +1,7 @@
+.aspectRatioBox {
+    position: relative;
+  }
+  
+  .mediaInside {
+    object-fit: cover;
+  }

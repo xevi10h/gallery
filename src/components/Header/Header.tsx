@@ -1,15 +1,71 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import {
+  Toolbar,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+import { Menu } from "@mui/icons-material";
 import "./Header.css";
+import CountrySelector from "../CountrySelector/CountrySelector";
+import { PhotoContext, PhotoContextType } from "../../contexts/PhotoContext";
 
-const Header: React.FC = () => {
+export default function Header() {
+  const { viewType, setViewType } = useContext(
+    PhotoContext
+  ) as PhotoContextType;
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (open: boolean) => () => {
+    setDrawerOpen(open);
+  };
+
+  type View = {
+    label: string;
+    value: "grid" | "carousel" | "list" | "card";
+  };
+
+  const views: View[] = [
+    { label: "Grid View", value: "grid" },
+    { label: "Carousel View", value: "carousel" },
+    { label: "List View", value: "list" },
+    { label: "Card View", value: "card" },
+  ];
+
+  const imageUrl =
+    "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_40e4275b85bd63f012509199e543c080/flowbox.png";
   return (
-    <header className="flowbox-header">
-      <div className="header-container">
-        <h1 className="flowbox-logo">Flowbox</h1>
-        {/* You can add navigation links or any other content here */}
+    <Toolbar className="root">
+      <div className="menu">
+        <IconButton
+          edge="start"
+          className="menuButton"
+          color="inherit"
+          onClick={toggleDrawer(true)}
+        >
+          <Menu />
+        </IconButton>
+        <div className="logo">
+          <img src={imageUrl} alt="Company Logo" />
+        </div>
       </div>
-    </header>
+      <CountrySelector />
+      <Drawer anchor="left" open={drawerOpen} onClick={toggleDrawer(false)}>
+        <List>
+          {views.map((view) => (
+            <ListItem
+              className={`sidebar__button ${
+                viewType === view.value ? "sidebar__button--active" : ""
+              }`}
+              onClick={() => setViewType(view.value)}
+            >
+              <ListItemText primary={view.label} />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </Toolbar>
   );
-};
-
-export default Header;
+}

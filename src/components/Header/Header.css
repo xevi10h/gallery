@@ -1,26 +1,69 @@
-.flowbox-header {
-    background-color: #1a2b3c; /* A deep blue color */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
-    padding: 0.5rem 2rem;
+/* Header.css */
+
+.root {
+    justify-content: flex-start;
+    background-color: white;
+    height: 60px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    padding-top:10px;
+    padding-bottom:10px
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
   }
   
-  .header-container {
-    max-width: 1200px; /* You can adjust this depending on your design preference */
-    margin: 0 auto;
+  .menuButton {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 24px;
+  }
+  
+  .logo {
     display: flex;
-    justify-content: space-between;
     align-items: center;
   }
   
-  .flowbox-logo {
-    color: #ffffff; /* White color for the logo */
-    font-size: 1.5em;
-    margin: 0; /* To remove default margin from h1 */
-    letter-spacing: 1px;
-    text-transform: uppercase; /* Makes the logo text all caps */
-    font-weight: 600;
-    cursor: pointer; /* Indicates it's clickable, in case you want to link it to the homepage */
+  .logo img {
+    height: 40px;
+    margin: 10px;
+  }
+
+  .sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 20;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: width 0.3s;
   }
   
-  /* If you want to add more styling, navigation links, hover effects, etc., you can add those styles here */
+  .sidebar--active {
+    width: 200px; /* o el ancho que desees */
+  }
+  
+  .sidebar__button {
+    display: block;
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 10px 20px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar__button:hover {
+    background-color: rgba(135, 8, 8, 0.1); /* Resaltado al pasar el ratón */
+  }
+  
+  .sidebar__button--active {
+    background-color: rgba(0, 0, 0, 0.3); /* Resaltado cuando está activo */
+  }
+  
   

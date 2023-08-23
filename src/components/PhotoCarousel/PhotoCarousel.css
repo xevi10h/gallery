@@ -1,0 +1,28 @@
+.photoCarouselContainer {
+    justify-content: center;
+    align-items: center;
+    padding-inline: 100px;
+    padding-top: 50px;
+    color: red;
+}
+
+.slider {
+    color:red
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color:black !important;
+}
+.photoCarouselBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photoCarouselImage {
+    width: 80%;
+    height: 80%;
+    margin: auto; /* esto centrará la imagen en caso de que no ocupe todo el espacio disponible */
+}

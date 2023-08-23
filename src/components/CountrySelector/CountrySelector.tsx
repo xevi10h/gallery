@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { PhotoContext, PhotoContextType } from "../../contexts/PhotoContext";
+import SearchIcon from "@mui/icons-material/Search";
+import "./CountrySelector.css";
 
 type countriesResponse = Array<{
   name: {
@@ -28,11 +30,19 @@ const CountrySelector: React.FC = () => {
 
   return (
     <Autocomplete
+      className="search"
       options={countries}
       getOptionLabel={(option) => option}
       onChange={(event, newValue) => setSelectedCountry(newValue || undefined)}
       renderInput={(params) => (
-        <TextField {...params} label="Choose a country" variant="outlined" />
+        <TextField
+          {...params}
+          placeholder="Choose the country you want to see"
+          InputProps={{
+            ...params.InputProps,
+            startAdornment: <SearchIcon className="searchIcon" />,
+          }}
+        />
       )}
     />
   );

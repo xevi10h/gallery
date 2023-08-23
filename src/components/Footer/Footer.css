@@ -1,5 +1,5 @@
 .flowbox-footer {
-    background-color: #1a2b3c; /* Same deep blue color as the header */
+    background-color: white; /* Same deep blue color as the header */
     padding: 1rem 2rem;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth at the top of the footer */
     position: relative;
@@ -16,7 +16,7 @@
   }
   
   .footer-content {
-    color: #ffffff; /* White color for the text */
+    color: black; /* White color for the text */
     font-size: 1em;
     letter-spacing: 0.5px;
     text-transform: capitalize;
