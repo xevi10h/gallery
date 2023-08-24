@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import {
   Toolbar,
   IconButton,
@@ -13,7 +13,7 @@ import CountrySelector from "../CountrySelector/CountrySelector";
 import { PhotoContext, PhotoContextType } from "../../contexts/PhotoContext";
 
 export default function Header() {
-  const { viewType, setViewType } = useContext(
+  const { viewType, setViewType, photoSelected } = useContext(
     PhotoContext
   ) as PhotoContextType;
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -37,8 +37,11 @@ export default function Header() {
   const imageUrl =
     "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_40e4275b85bd63f012509199e543c080/flowbox.png";
   return (
-    <Toolbar className="root">
-      <div className="menu">
+    <Toolbar
+      className="headerRoot"
+      style={photoSelected ? { display: "none" } : undefined}
+    >
+      <div className="menuContainer">
         <IconButton
           edge="start"
           className="menuButton"
@@ -54,14 +57,18 @@ export default function Header() {
       <CountrySelector />
       <Drawer anchor="left" open={drawerOpen} onClick={toggleDrawer(false)}>
         <List>
-          {views.map((view) => (
+          {views.map((view, i) => (
             <ListItem
               className={`sidebar__button ${
                 viewType === view.value ? "sidebar__button--active" : ""
               }`}
               onClick={() => setViewType(view.value)}
+              key={i}
             >
-              <ListItemText primary={view.label} />
+              <ListItemText
+                className="sidebar__button_text"
+                primary={view.label}
+              />
             </ListItem>
           ))}
         </List>

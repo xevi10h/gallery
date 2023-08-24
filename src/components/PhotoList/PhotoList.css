@@ -1,7 +1,30 @@
-.aspectRatioBox {
-    position: relative;
-  }
-  
-  .mediaInside {
-    object-fit: cover;
-  }
+.listPhotoCard {
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  margin-inline: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.listPhotoContainer {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.listPhotoImage {
+  min-height: 150px;
+  min-width: 150px;
+}
+
+.listPhotoTextContainer {
+  flex: 1;
+}
+
+.listPhotoTextLine {
+  margin-bottom: 10px;
+}
+
+.listPhotoTextPrimary {
+  font-weight: bold;
+}

@@ -1,7 +1,7 @@
-.aspectRatioBox {
-    position: relative;
-  }
-  
-  .mediaInside {
-    object-fit: cover;
-  }
+.gridPhotoContainer {
+  position: relative;
+}
+
+.gridPhotoImage {
+  object-fit: cover;
+}

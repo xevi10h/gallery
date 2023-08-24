@@ -1,69 +1,63 @@
-/* Header.css */
+.headerRoot {
+  justify-content: flex-start;
+  background-color: white;
+  height: 60px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
-.root {
-    justify-content: flex-start;
-    background-color: white;
-    height: 60px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    padding-top:10px;
-    padding-bottom:10px
-  }
+.menuContainer {
+  display: flex;
+  flex-direction: row;
+}
 
-  .menu {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .menuButton {
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    font-size: 24px;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo img {
-    height: 40px;
-    margin: 10px;
-  }
+.menuButton {
+  cursor: pointer;
+  border: none;
+  background-color: transparent !important;
+}
 
-  .sidebar {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 20;
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: width 0.3s;
-  }
-  
-  .sidebar--active {
-    width: 200px; /* o el ancho que desees */
-  }
-  
-  .sidebar__button {
-    display: block;
-    background: transparent;
-    border: none;
-    text-align: left;
-    padding: 10px 20px;
-    width: 100%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .sidebar__button:hover {
-    background-color: rgba(135, 8, 8, 0.1); /* Resaltado al pasar el ratón */
-  }
-  
-  .sidebar__button--active {
-    background-color: rgba(0, 0, 0, 0.3); /* Resaltado cuando está activo */
-  }
-  
-  
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  margin: 10px;
+}
+
+.sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: width 0.1s;
+}
+
+.sidebar--active {
+  width: 200px;
+}
+
+.sidebar__button {
+  display: block;
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 10px 20px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sidebar__button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar__button--active {
+  background-color: rgba(0, 0, 0, 0.3);
+}

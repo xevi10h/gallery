@@ -1,5 +1,6 @@
 .main-content {
-    position: relative;
-    padding-top: 20px; /* Esto es para que el Sidebar (que está en posición absoluta) esté posicionado relativo a este contenedor */
-  }
-  
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-top: 20px;
+}

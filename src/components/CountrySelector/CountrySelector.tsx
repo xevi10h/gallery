@@ -1,29 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { PhotoContext, PhotoContextType } from "../../contexts/PhotoContext";
 import SearchIcon from "@mui/icons-material/Search";
 import "./CountrySelector.css";
+import { fetchCountries } from "../../services/contriesService";
 
-type countriesResponse = Array<{
-  name: {
-    common: string;
-  };
-}>;
-
-const CountrySelector: React.FC = () => {
+export default function CountrySelector() {
   const { setSelectedCountry } = useContext(PhotoContext) as PhotoContextType;
   const [countries, setCountries] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
-        const data: countriesResponse = await response.json();
-        setCountries(data.map((country) => country.name.common));
-      } catch (error) {
-        console.error("There was an error fetching the data:", error);
-      }
+      const countriesList = await fetchCountries();
+      setCountries(countriesList);
     };
     fetchData();
   }, []);
@@ -36,6 +26,7 @@ const CountrySelector: React.FC = () => {
       onChange={(event, newValue) => setSelectedCountry(newValue || undefined)}
       renderInput={(params) => (
         <TextField
+          className="searchItem"
           {...params}
           placeholder="Choose the country you want to see"
           InputProps={{
@@ -46,6 +37,4 @@ const CountrySelector: React.FC = () => {
       )}
     />
   );
-};
-
-export default CountrySelector;
+}

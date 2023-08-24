@@ -1,31 +1,57 @@
-import React, { useContext } from "react";
-import { Grid, Container, Card, CardMedia } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
+import { Container, Card, CardMedia } from "@mui/material";
 import { PhotoContext, PhotoContextType } from "../../contexts/PhotoContext";
 import "./PhotoList.css";
+import { fetchRandomText } from "../../services/textService";
 
-const PhotoList: React.FC = () => {
-  const { photos } = useContext(PhotoContext) as PhotoContextType;
+export default function PhotoList() {
+  const { photos, setPhotoSelected } = useContext(
+    PhotoContext
+  ) as PhotoContextType;
+  const [text, setText] = useState<string | undefined>("");
+  useEffect(() => {
+    const fetchData = async () => {
+      const randomText = await fetchRandomText();
+      setText(randomText);
+    };
+    fetchData();
+  }, []);
   return (
     <Container>
-      <Grid container spacing={3}>
-        {photos.map((photo, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card>
-              <div className="aspectRatioBox">
-                <CardMedia
-                  className="mediaInside"
-                  component="img"
-                  alt={photo.description}
-                  image={photo.image}
-                  title={photo.name}
-                />
-              </div>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      {photos.map((photo) => (
+        <Card
+          onClick={() => {
+            setPhotoSelected(photo);
+          }}
+          className="listPhotoCard"
+        >
+          <div className="listPhotoContainer">
+            <CardMedia
+              className="listPhotoImage"
+              component="img"
+              alt={photo.description}
+              image={photo.imageSmall}
+              title={photo.name}
+            />
+          </div>
+          <div className="listPhotoTextContainer">
+            <div className="listPhotoTextLine">
+              <span className="listPhotoTextPrimary">Author:</span>{" "}
+              <span>
+                {`${photo.name.replace(/\b\w/g, (char) => char.toUpperCase())}`}
+              </span>
+            </div>
+            <div className="listPhotoTextLine">
+              <span className="listPhotoTextPrimary">Description:</span>{" "}
+              <span>{`${photo.description}`}</span>
+            </div>
+            <div className="listPhotoTextLine">
+              <span className="listPhotoTextPrimary">Overview:</span>{" "}
+              <span>{text}</span>
+            </div>
+          </div>
+        </Card>
+      ))}
     </Container>
   );
-};
-
-export default PhotoList;
+}

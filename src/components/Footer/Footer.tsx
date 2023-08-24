@@ -1,9 +1,14 @@
-import React from "react";
+import { useContext } from "react";
 import "./Footer.css";
+import { PhotoContext, PhotoContextType } from "../../contexts/PhotoContext";
 
-const Footer: React.FC = () => {
+export default function Footer() {
+  const { photoSelected } = useContext(PhotoContext) as PhotoContextType;
   return (
-    <footer className=" flowbox-footer">
+    <footer
+      style={photoSelected ? { display: "none" } : undefined}
+      className=" flowbox-footer"
+    >
       <div className="footer-container">
         <p className="footer-content">
           © {new Date().getFullYear()} Flowbox. All rights reserved.
@@ -12,6 +17,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

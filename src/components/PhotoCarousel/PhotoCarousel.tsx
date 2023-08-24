@@ -1,4 +1,4 @@
-import React, { Component, useContext } from "react";
+import { useContext } from "react";
 import Slider from "react-slick";
 import { PhotoContext, PhotoContextType } from "../../contexts/PhotoContext";
 import "./PhotoCarousel.css";
@@ -8,27 +8,28 @@ export default function SimpleSlider() {
   const { photos } = useContext(PhotoContext) as PhotoContextType;
   const { width } = useWindowSize();
   let slidesToShow;
-  if (width > 1200) {
+  let slidesToScroll = 1;
+  if (width > 1200 && photos.length > 5) {
     slidesToShow = 5;
-  } else if (width > 768) {
+    slidesToScroll = 2;
+  } else if (width > 768 && photos.length > 3) {
     slidesToShow = 3;
   } else {
     slidesToShow = 1;
   }
   return (
-    <div className="photoCarouselContainer">
+    <div className="carouselContainer">
       <Slider
         infinite={true}
         speed={500}
         slidesToShow={slidesToShow}
-        slidesToScroll={1}
-        className="slider"
+        slidesToScroll={slidesToScroll}
       >
         {photos.map((photo, index) => (
-          <div className="photoCarouselBox">
+          <div className="carouselPhotoContainer">
             <img
-              className="photoCarouselImage"
-              src={photo.image}
+              className="carouselPhotoImage"
+              src={photo.imageSmall}
               alt={`carousel-img-${index}`}
             />
           </div>

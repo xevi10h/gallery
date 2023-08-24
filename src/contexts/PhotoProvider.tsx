@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { PhotoContext, PhotoContextType } from "./PhotoContext";
+import { Photo, PhotoContext, PhotoContextType } from "./PhotoContext";
 
 interface PhotoProviderProps {
   children: React.ReactNode;
 }
 
-export const PhotoProvider: React.FC<PhotoProviderProps> = ({ children }) => {
-  const [photos, setPhotos] = useState<any[]>([]);
+export default function PhotoProvider({ children }: PhotoProviderProps) {
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [photoSelected, setPhotoSelected] = useState<Photo | null>(null);
   const [viewType, setViewType] = useState<
     "grid" | "carousel" | "list" | "card"
   >("grid");
@@ -17,6 +18,8 @@ export const PhotoProvider: React.FC<PhotoProviderProps> = ({ children }) => {
   const contextValue: PhotoContextType = {
     photos,
     setPhotos,
+    photoSelected,
+    setPhotoSelected,
     viewType,
     setViewType,
     selectedCountry,
@@ -28,4 +31,4 @@ export const PhotoProvider: React.FC<PhotoProviderProps> = ({ children }) => {
       {children}
     </PhotoContext.Provider>
   );
-};
+}
