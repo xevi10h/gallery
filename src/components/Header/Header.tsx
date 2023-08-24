@@ -47,6 +47,7 @@ export default function Header() {
           className="menuButton"
           color="inherit"
           onClick={toggleDrawer(true)}
+          data-testid="menu-button"
         >
           <Menu />
         </IconButton>
