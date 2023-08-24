@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { PhotoContext, PhotoContextType } from "../../contexts/PhotoContext";
-import SearchIcon from "@mui/icons-material/Search";
+import { Search } from "@mui/icons-material";
 import "./CountrySelector.css";
 import { fetchCountries } from "../../services/contriesService";
 
@@ -31,7 +31,7 @@ export default function CountrySelector() {
           placeholder="Choose the country you want to see"
           InputProps={{
             ...params.InputProps,
-            startAdornment: <SearchIcon className="searchIcon" />,
+            startAdornment: <Search className="searchIcon" />,
           }}
         />
       )}

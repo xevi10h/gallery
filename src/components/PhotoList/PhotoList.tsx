@@ -18,8 +18,9 @@ export default function PhotoList() {
   }, []);
   return (
     <Container>
-      {photos.map((photo) => (
+      {photos.map((photo, index) => (
         <Card
+          key={index}
           onClick={() => {
             setPhotoSelected(photo);
           }}

@@ -7,7 +7,7 @@ import useWindowSize from "../../utils/UseWindowSize";
 export default function SimpleSlider() {
   const { photos } = useContext(PhotoContext) as PhotoContextType;
   const { width } = useWindowSize();
-  let slidesToShow;
+  let slidesToShow = 1;
   let slidesToScroll = 1;
   if (width > 1200 && photos.length > 5) {
     slidesToShow = 5;
@@ -26,11 +26,11 @@ export default function SimpleSlider() {
         slidesToScroll={slidesToScroll}
       >
         {photos.map((photo, index) => (
-          <div className="carouselPhotoContainer">
+          <div key={index} className="carouselPhotoContainer">
             <img
               className="carouselPhotoImage"
               src={photo.imageSmall}
-              alt={`carousel-img-${index}`}
+              alt={photo.description}
             />
           </div>
         ))}

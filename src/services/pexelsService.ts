@@ -1,6 +1,9 @@
 import { createClient, Photo } from "pexels";
 
-const pexelsClient = createClient(process.env.REACT_APP_PEXELS_API_KEY || "");
+const pexelsClient = createClient(
+  process.env.REACT_APP_PEXELS_API_KEY ||
+    "x0rHsPqPzJiIRR4wuCYApruAJXTM3q49RWpMc7YuGq5zWKp6YWhI35gE"
+);
 
 export const fetchPhotosByCountry = async (country: string) => {
   const response: any = await pexelsClient.photos.search({
