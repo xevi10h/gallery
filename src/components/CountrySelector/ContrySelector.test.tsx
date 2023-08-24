@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import Footer from "./Footer";
+import CountrySelector from "./CountrySelector";
 import { PhotoContext } from "../../contexts/PhotoContext";
 import { expect, jest } from "@jest/globals";
 
-describe("Footer Tests", () => {
+describe("Contry Selector Tests", () => {
   const mockPhotoSelected = {
     id: "123456",
     imageSmall:
@@ -26,13 +26,11 @@ describe("Footer Tests", () => {
           setSelectedCountry: jest.fn(),
         }}
       >
-        <Footer />
+        <CountrySelector />
       </PhotoContext.Provider>
     );
 
-    const fotterText = await screen.findByText(
-      /Flowbox. All rights reserved./i
-    );
-    expect(fotterText).toBeInTheDocument();
+    const menuButton = await screen.findByTestId("contry-selector");
+    expect(menuButton).toBeInTheDocument();
   });
 });

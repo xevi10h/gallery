@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import PhotoCarousel from "./PhotoCarousel";
 import { PhotoContext } from "../../contexts/PhotoContext";
 import { expect, jest } from "@jest/globals";
@@ -13,7 +13,7 @@ describe("Photo Carousel Tests", () => {
     name: "Aleksandar Pasaric",
   };
   it("Testing render", async () => {
-    const { findByAltText } = render(
+    render(
       <PhotoContext.Provider
         value={{
           photoSelected: null,
@@ -30,7 +30,7 @@ describe("Photo Carousel Tests", () => {
       </PhotoContext.Provider>
     );
 
-    const image = await findByAltText("Aerial Photography Of City");
+    const image = await screen.findByAltText("Aerial Photography Of City");
     expect(image).toBeInTheDocument();
   });
 });

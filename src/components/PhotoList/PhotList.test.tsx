@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import PhotoList from "./PhotoList";
 import { PhotoContext } from "../../contexts/PhotoContext";
 import { expect, jest } from "@jest/globals";
@@ -13,7 +13,7 @@ describe("Photo List Tests", () => {
     name: "Aleksandar Pasaric",
   };
   it("Testing render", async () => {
-    const { findByAltText, findByText } = render(
+    render(
       <PhotoContext.Provider
         value={{
           photoSelected: null,
@@ -30,22 +30,24 @@ describe("Photo List Tests", () => {
       </PhotoContext.Provider>
     );
 
-    const image = await findByAltText("Aerial Photography Of City");
+    const image = await screen.findByAltText("Aerial Photography Of City");
     expect(image).toBeInTheDocument();
 
-    const authorLabel = await findByText("Author:");
+    const authorLabel = await screen.findByText("Author:");
     expect(authorLabel).toBeInTheDocument();
 
-    const authorName = await findByText("Aleksandar Pasaric");
+    const authorName = await screen.findByText("Aleksandar Pasaric");
     expect(authorName).toBeInTheDocument();
 
-    const descriptionLabel = await findByText("Description:");
+    const descriptionLabel = await screen.findByText("Description:");
     expect(descriptionLabel).toBeInTheDocument();
 
-    const descriptionText = await findByText("Aerial Photography Of City");
+    const descriptionText = await screen.findByText(
+      "Aerial Photography Of City"
+    );
     expect(descriptionText).toBeInTheDocument();
 
-    const overviewLabel = await findByText("Overview:");
+    const overviewLabel = await screen.findByText("Overview:");
     expect(overviewLabel).toBeInTheDocument();
   });
 });

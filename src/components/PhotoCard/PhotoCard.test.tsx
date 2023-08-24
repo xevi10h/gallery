@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import PhotoCard from "./PhotoCard";
 import { PhotoContext } from "../../contexts/PhotoContext";
 import { expect, jest } from "@jest/globals";
@@ -13,7 +13,7 @@ describe("Photo Card Tests", () => {
     name: "Aleksandar Pasaric",
   };
   it("Testing render", async () => {
-    const { findByAltText, findByText } = render(
+    render(
       <PhotoContext.Provider
         value={{
           photoSelected: null,
@@ -30,13 +30,13 @@ describe("Photo Card Tests", () => {
       </PhotoContext.Provider>
     );
 
-    const image = await findByAltText("Aerial Photography Of City");
+    const image = await screen.findByAltText("Aerial Photography Of City");
     expect(image).toBeInTheDocument();
 
-    const authorLabel = await findByText("Author:");
+    const authorLabel = await screen.findByText("Author:");
     expect(authorLabel).toBeInTheDocument();
 
-    const authorName = await findByText("Aleksandar Pasaric");
+    const authorName = await screen.findByText("Aleksandar Pasaric");
     expect(authorName).toBeInTheDocument();
   });
 });

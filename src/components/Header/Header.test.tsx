@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Header from "./Header";
 import { PhotoContext } from "../../contexts/PhotoContext";
 import { expect, jest } from "@jest/globals";
@@ -13,7 +13,7 @@ describe("Header Tests", () => {
     name: "Aleksandar Pasaric",
   };
   it("Testing render", async () => {
-    const { findByAltText, findByTestId } = render(
+    render(
       <PhotoContext.Provider
         value={{
           photoSelected: mockPhotoSelected,
@@ -30,10 +30,10 @@ describe("Header Tests", () => {
       </PhotoContext.Provider>
     );
 
-    const companyLogo = await findByAltText("Company Logo");
+    const companyLogo = await screen.findByAltText("Company Logo");
     expect(companyLogo).toBeInTheDocument();
 
-    const menuButton = await findByTestId("menu-button");
+    const menuButton = await screen.findByTestId("menu-button");
     expect(menuButton).toBeInTheDocument();
   });
 });

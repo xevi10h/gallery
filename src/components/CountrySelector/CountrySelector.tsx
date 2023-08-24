@@ -20,6 +20,7 @@ export default function CountrySelector() {
 
   return (
     <Autocomplete
+      data-testid="contry-selector"
       className="search"
       options={countries}
       getOptionLabel={(option) => option}

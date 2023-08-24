@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import MainContent from "./MainContent";
 import { PhotoContext } from "../../contexts/PhotoContext";
 import { expect, jest } from "@jest/globals";
@@ -13,7 +13,7 @@ describe("Main Content Tests", () => {
     name: "Aleksandar Pasaric",
   };
   it("Testing grid", async () => {
-    const { findByAltText } = render(
+    render(
       <PhotoContext.Provider
         value={{
           photoSelected: null,
@@ -29,12 +29,12 @@ describe("Main Content Tests", () => {
         <MainContent />
       </PhotoContext.Provider>
     );
-    const image = await findByAltText("Aerial Photography Of City");
+    const image = await screen.findByAltText("Aerial Photography Of City");
     expect(image).toBeInTheDocument();
   });
 
   it("Testing card", async () => {
-    const { findByAltText, findByText } = render(
+    render(
       <PhotoContext.Provider
         value={{
           photoSelected: null,
@@ -51,18 +51,18 @@ describe("Main Content Tests", () => {
       </PhotoContext.Provider>
     );
 
-    const image = await findByAltText("Aerial Photography Of City");
+    const image = await screen.findByAltText("Aerial Photography Of City");
     expect(image).toBeInTheDocument();
 
-    const authorLabel = await findByText("Author:");
+    const authorLabel = await screen.findByText("Author:");
     expect(authorLabel).toBeInTheDocument();
 
-    const authorName = await findByText("Aleksandar Pasaric");
+    const authorName = await screen.findByText("Aleksandar Pasaric");
     expect(authorName).toBeInTheDocument();
   });
 
   it("Testing list", async () => {
-    const { findByAltText, findByText } = render(
+    render(
       <PhotoContext.Provider
         value={{
           photoSelected: null,
@@ -79,27 +79,29 @@ describe("Main Content Tests", () => {
       </PhotoContext.Provider>
     );
 
-    const image = await findByAltText("Aerial Photography Of City");
+    const image = await screen.findByAltText("Aerial Photography Of City");
     expect(image).toBeInTheDocument();
 
-    const authorLabel = await findByText("Author:");
+    const authorLabel = await screen.findByText("Author:");
     expect(authorLabel).toBeInTheDocument();
 
-    const authorName = await findByText("Aleksandar Pasaric");
+    const authorName = await screen.findByText("Aleksandar Pasaric");
     expect(authorName).toBeInTheDocument();
 
-    const descriptionLabel = await findByText("Description:");
+    const descriptionLabel = await screen.findByText("Description:");
     expect(descriptionLabel).toBeInTheDocument();
 
-    const descriptionText = await findByText("Aerial Photography Of City");
+    const descriptionText = await screen.findByText(
+      "Aerial Photography Of City"
+    );
     expect(descriptionText).toBeInTheDocument();
 
-    const overviewLabel = await findByText("Overview:");
+    const overviewLabel = await screen.findByText("Overview:");
     expect(overviewLabel).toBeInTheDocument();
   });
 
   it("Testing carousel", async () => {
-    const { findByAltText } = render(
+    render(
       <PhotoContext.Provider
         value={{
           photoSelected: null,
@@ -116,12 +118,12 @@ describe("Main Content Tests", () => {
       </PhotoContext.Provider>
     );
 
-    const image = await findByAltText("Aerial Photography Of City");
+    const image = await screen.findByAltText("Aerial Photography Of City");
     expect(image).toBeInTheDocument();
   });
 
   it("Testing unique card", async () => {
-    const { findByAltText, findByText, queryByAltText } = render(
+    render(
       <PhotoContext.Provider
         value={{
           photoSelected: mockPhotoSelected,
@@ -141,25 +143,27 @@ describe("Main Content Tests", () => {
       </PhotoContext.Provider>
     );
 
-    const image = await findByAltText("Aerial Photography Of City");
+    const image = await screen.findByAltText("Aerial Photography Of City");
     expect(image).toBeInTheDocument();
 
-    const imageNotToBe = queryByAltText("Description not to be");
+    const imageNotToBe = screen.queryByAltText("Description not to be");
     expect(imageNotToBe).not.toBeInTheDocument();
 
-    const authorLabel = await findByText("Author:");
+    const authorLabel = await screen.findByText("Author:");
     expect(authorLabel).toBeInTheDocument();
 
-    const authorName = await findByText("Aleksandar Pasaric");
+    const authorName = await screen.findByText("Aleksandar Pasaric");
     expect(authorName).toBeInTheDocument();
 
-    const descriptionLabel = await findByText("Description:");
+    const descriptionLabel = await screen.findByText("Description:");
     expect(descriptionLabel).toBeInTheDocument();
 
-    const descriptionText = await findByText("Aerial Photography Of City");
+    const descriptionText = await screen.findByText(
+      "Aerial Photography Of City"
+    );
     expect(descriptionText).toBeInTheDocument();
 
-    const overviewLabel = await findByText("Overview:");
+    const overviewLabel = await screen.findByText("Overview:");
     expect(overviewLabel).toBeInTheDocument();
   });
 });
